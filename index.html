@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chris McLean | Enterprise Sales Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0d1b2a;--navy2:#152438;--blue:#1a4a7a;--accent:#2a7de1;--accent2:#5ba3f5;--gold:#c8973a;--light:#f4f7fb;--white:#ffffff;--text:#2c3e50;--muted:#6b7c93;--border:#dde4ee;--bg2:#f8fafd}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text);font-size:16px;line-height:1.7}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--light)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(255,255,255,.96);border-bottom:1px solid var(--border);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 40px;height:66px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:21px;color:var(--navy);text-decoration:none;letter-spacing:-.5px}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{font-size:13px;font-weight:500;letter-spacing:.3px;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{background:var(--accent)!important;color:#fff!important;padding:8px 20px!important;border-radius:6px;font-weight:600!important}
+.nav-cta:hover{background:var(--blue)!important}
+.mob-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.mob-btn span{width:24px;height:2px;background:var(--navy);border-radius:1px}
+.mob-menu{display:none;position:fixed;top:66px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:20px 24px;flex-direction:column;gap:0;z-index:299}
+.mob-menu a{font-size:15px;font-weight:500;color:var(--text);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--border);display:block}
+.mob-menu a:last-child{border-bottom:none}
+.mob-menu.open{display:flex}
+
+/* HERO */
+.hero{padding-top:66px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 55%,#1b3d60 100%);min-height:92vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 75% 50%,rgba(42,125,225,.14) 0%,transparent 60%),radial-gradient(ellipse at 15% 85%,rgba(200,151,58,.07) 0%,transparent 50%)}
+.hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:64px 64px}
+.hero-inner{max-width:1200px;margin:0 auto;padding:80px 40px;position:relative;z-index:2;display:grid;grid-template-columns:1.3fr 1fr;gap:80px;align-items:center;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(42,125,225,.18);border:1px solid rgba(42,125,225,.38);color:var(--accent2);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:24px;opacity:0;animation:fadeUp .6s .1s forwards}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--accent2);border-radius:50%}
+.hero-name{font-family:'DM Serif Display',serif;font-size:clamp(52px,7vw,84px);color:#fff;line-height:1.02;letter-spacing:-2.5px;margin-bottom:14px;opacity:0;animation:fadeUp .7s .25s forwards}
+.hero-name em{font-style:italic;color:var(--accent2)}
+.hero-role{font-size:15.5px;font-weight:400;color:rgba(255,255,255,.58);margin-bottom:24px;opacity:0;animation:fadeUp .7s .4s forwards}
+.hero-summary{font-size:15.5px;color:rgba(255,255,255,.74);line-height:1.85;max-width:520px;margin-bottom:40px;opacity:0;animation:fadeUp .7s .54s forwards}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:fadeUp .7s .68s forwards}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;text-decoration:none;padding:12px 24px;border-radius:6px;transition:all .2s;cursor:pointer;border:none;white-space:nowrap}
+.btn-blue{background:var(--accent);color:#fff}
+.btn-blue:hover{background:#1e6bc7;transform:translateY(-1px);box-shadow:0 8px 22px rgba(42,125,225,.35)}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.28)}
+.btn-ghost:hover{background:rgba(255,255,255,.08);transform:translateY(-1px)}
+
+/* Stats */
+.hero-stats{opacity:0;animation:fadeUp .8s .82s forwards}
+.stats-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:34px;backdrop-filter:blur(10px)}
+.stats-eyebrow{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent2);margin-bottom:24px}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;border-radius:8px;overflow:hidden}
+.stat-box{background:rgba(255,255,255,.04);padding:20px 16px}
+.stat-num{font-family:'DM Serif Display',serif;font-size:38px;color:#fff;line-height:1;letter-spacing:-1px}
+.stat-num .gold{color:var(--gold)}
+.stat-desc{font-size:11px;color:rgba(255,255,255,.45);margin-top:5px;line-height:1.4}
+.stats-sep{height:1px;background:rgba(255,255,255,.07);margin:22px 0}
+.hc-row{display:flex;align-items:center;gap:10px;font-size:12.5px;color:rgba(255,255,255,.5);margin-bottom:8px}
+.hc-row:last-child{margin-bottom:0}
+
+/* Layout */
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px}
+.sp{padding:92px 0}
+.alt{background:var(--bg2)}
+.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.el{width:28px;height:2px;background:var(--accent);border-radius:1px}
+.et{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent)}
+.sec-title{font-family:'DM Serif Display',serif;font-size:clamp(30px,4vw,46px);color:var(--navy);line-height:1.1;letter-spacing:-1px;margin-bottom:12px}
+.sec-sub{font-size:15.5px;color:var(--muted);max-width:540px;line-height:1.75;margin-bottom:48px}
+
+/* Summary */
+.sum-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:68px;align-items:start}
+.sum-text p{font-size:16.5px;color:var(--text);line-height:1.85;margin-bottom:20px}
+.sum-panel{background:var(--navy);border-radius:14px;padding:34px}
+.sp-title{font-family:'DM Serif Display',serif;font-size:20px;color:#fff;margin-bottom:20px;letter-spacing:-.5px}
+.sp-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.sp-item:last-child{border-bottom:none}
+.sp-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:8px;flex-shrink:0}
+.sp-txt{font-size:14px;color:rgba(255,255,255,.7);line-height:1.6}
+.sp-txt strong{color:#fff;font-weight:600}
+
+/* Experience */
+.exp-tl{position:relative}
+.exp-tl::before{content:'';position:absolute;left:19px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),var(--border))}
+.exp-entry{display:grid;grid-template-columns:40px 1fr;gap:28px;margin-bottom:20px}
+.exp-dot{width:40px;height:40px;background:var(--white);border:2.5px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;z-index:1;margin-top:6px}
+.exp-dot-in{width:11px;height:11px;background:var(--accent);border-radius:50%}
+.exp-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:box-shadow .3s,border-color .3s}
+.exp-card:hover{box-shadow:0 6px 28px rgba(13,27,42,.09);border-color:rgba(42,125,225,.28)}
+.exp-head{padding:24px 28px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;cursor:pointer;user-select:none}
+.exp-co{font-family:'DM Serif Display',serif;font-size:21px;color:var(--navy);letter-spacing:-.5px;margin-bottom:6px}
+.rb{display:inline-block;background:rgba(42,125,225,.1);color:var(--accent);font-size:12px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:4px}
+.exp-date{font-size:12.5px;color:var(--muted)}
+.tog{font-size:26px;color:var(--muted);transition:transform .3s,color .2s;line-height:1;flex-shrink:0;padding-top:2px}
+.exp-card.open .tog{transform:rotate(45deg);color:var(--accent)}
+.exp-body{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.exp-card.open .exp-body{max-height:900px}
+.exp-content{padding:22px 28px 28px;border-top:1px solid var(--border)}
+.bul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.bul li{font-size:14.5px;color:var(--text);line-height:1.7;padding-left:18px;position:relative}
+.bul li::before{content:'';position:absolute;left:0;top:10px;width:5px;height:5px;background:var(--accent);border-radius:50%}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px;padding-top:18px;border-top:1px solid var(--border)}
+.tag{font-size:11px;font-weight:600;letter-spacing:.4px;color:var(--muted);background:var(--light);padding:4px 10px;border-radius:4px}
+
+/* Skills */
+.sk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.sk-cat{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:28px;transition:box-shadow .3s}
+.sk-cat:hover{box-shadow:0 6px 24px rgba(13,27,42,.08)}
+.sk-icon{width:44px;height:44px;background:rgba(42,125,225,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px}
+.sk-name{font-family:'DM Serif Display',serif;font-size:18px;color:var(--navy);margin-bottom:16px;letter-spacing:-.3px}
+.sk-list{display:flex;flex-direction:column;gap:9px}
+.sk-row{display:flex;align-items:center;justify-content:space-between;font-size:13.5px;color:var(--text)}
+.sk-bg{width:72px;height:4px;background:var(--border);border-radius:2px;overflow:hidden;flex-shrink:0}
+.sk-bar{height:100%;background:linear-gradient(to right,var(--accent),var(--accent2));border-radius:2px;width:0;transition:width 1.2s ease}
+
+/* Education */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.edu-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:30px;display:flex;gap:18px;align-items:flex-start;transition:box-shadow .3s}
+.edu-card:hover{box-shadow:0 6px 24px rgba(13,27,42,.08)}
+.edu-icon{width:52px;height:52px;background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.edu-deg{font-family:'DM Serif Display',serif;font-size:18px;color:var(--navy);margin-bottom:4px;line-height:1.3;letter-spacing:-.3px}
+.edu-sch{font-size:13.5px;font-weight:600;color:var(--accent);margin-bottom:3px}
+.edu-det{font-size:12.5px;color:var(--muted)}
+
+/* Certs */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.cert-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:18px 22px;display:flex;align-items:center;gap:14px;transition:all .22s}
+.cert-card:hover{border-color:rgba(42,125,225,.38);box-shadow:0 4px 16px rgba(42,125,225,.1);transform:translateY(-1px)}
+.cert-badge{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;letter-spacing:.5px;flex-shrink:0;color:#fff}
+.fema{background:linear-gradient(135deg,#1a5276,#2471a3)}
+.hs{background:linear-gradient(135deg,#c0392b,#e74c3c)}
+.army{background:linear-gradient(135deg,#1a3a1a,#27642a)}
+.cert-name{font-size:14px;font-weight:600;color:var(--navy);line-height:1.3}
+.cert-org{font-size:12px;color:var(--muted);margin-top:2px}
+
+/* Contact */
+.ct-layout{display:grid;grid-template-columns:1fr 1.15fr;gap:68px;align-items:start}
+.ct-items{display:flex;flex-direction:column;gap:12px;margin-top:30px}
+.ci{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:all .2s}
+.ci:hover{border-color:var(--accent);background:rgba(42,125,225,.04);transform:translateX(4px)}
+.ci-icon{width:38px;height:38px;background:rgba(42,125,225,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ci-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted)}
+.ci-val{font-size:14px;font-weight:600;color:var(--navy)}
+.cf{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:36px;box-shadow:0 4px 28px rgba(13,27,42,.06)}
+.cf-title{font-family:'DM Serif Display',serif;font-size:24px;color:var(--navy);margin-bottom:24px;letter-spacing:-.5px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.fg input,.fg textarea,.fg select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);background:var(--white);transition:border-color .2s,box-shadow .2s;outline:none;-webkit-appearance:none;appearance:none}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(42,125,225,.1)}
+.fg textarea{height:110px;resize:vertical}
+.fsub{width:100%;padding:13px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:background .2s,transform .15s;margin-top:4px}
+.fsub:hover{background:var(--blue);transform:translateY(-1px)}
+.fnote{font-size:12px;color:var(--muted);text-align:center;margin-top:10px}
+.fsuccess{display:none;text-align:center;padding:16px;background:rgba(42,125,225,.06);border:1px solid rgba(42,125,225,.2);border-radius:8px;color:var(--accent);font-weight:600;font-size:14px;margin-top:12px}
+
+/* Footer */
+footer{background:var(--navy);padding:34px 40px}
+.fi{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.flogo{font-family:'DM Serif Display',serif;font-size:20px;color:#fff}
+.flogo span{color:var(--accent2)}
+.ftxt{font-size:12px;color:rgba(255,255,255,.38)}
+.flinks{display:flex;gap:20px}
+.flinks a{font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.flinks a:hover{color:var(--accent2)}
+
+/* Animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* Responsive */
+@media(max-width:960px){
+  .nav-links{display:none}.mob-btn{display:flex}
+  .hero-inner{grid-template-columns:1fr;gap:48px}.hero-stats{display:none}
+  .sum-grid{grid-template-columns:1fr;gap:40px}
+  .sk-grid{grid-template-columns:1fr 1fr}
+  .edu-grid{grid-template-columns:1fr}
+  .ct-layout{grid-template-columns:1fr;gap:48px}
+  .wrap{padding:0 24px}.sp{padding:64px 0}
+  footer{padding:26px 24px}.form-row{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .sk-grid{grid-template-columns:1fr}.cert-grid{grid-template-columns:1fr}
+  .hero-actions{flex-direction:column}.btn{justify-content:center}
+  .fi{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Chris <span>McLean</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact" class="nav-cta">Contact Me</a></li>
+    </ul>
+    <div class="mob-btn" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#experience" onclick="closeMenu()">Experience</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#education" onclick="closeMenu()">Education</a>
+  <a href="#certifications" onclick="closeMenu()">Certifications</a>
+  <a href="#contact" onclick="closeMenu()">Contact Me</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Open to New Opportunities</div>
+      <h1 class="hero-name">Chris<br><em>McLean</em></h1>
+      <p class="hero-role">Enterprise Sales Leader &nbsp;·&nbsp; Boston, MA &nbsp;·&nbsp; U.S. Army Veteran</p>
+      <p class="hero-summary">10+ years closing complex, multi-stakeholder enterprise deals across SaaS, public sector, and infrastructure. MEDDIC-certified. Mission-driven. Consistently above quota.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-blue">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get In Touch
+        </a>
+        <a href="https://www.linkedin.com/in/chris-mclean422" target="_blank" class="btn btn-ghost">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="#" class="btn btn-ghost" onclick="window.print();return false;">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download Resume
+        </a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stats-card">
+        <div class="stats-eyebrow">Career Highlights</div>
+        <div class="stats-grid">
+          <div class="stat-box"><div class="stat-num"><span class="gold" data-count="118" data-suffix="%">0%</span></div><div class="stat-desc">YTD Quota Attainment</div></div>
+          <div class="stat-box"><div class="stat-num">$<span data-count="2.6" data-suffix="M" data-decimal>0</span></div><div class="stat-desc">Largest Single Deal</div></div>
+          <div class="stat-box"><div class="stat-num"><span data-count="93" data-suffix="%">0%</span></div><div class="stat-desc">Lifetime Avg Attainment</div></div>
+          <div class="stat-box"><div class="stat-num">$<span data-count="350" data-suffix="K">0</span></div><div class="stat-desc">Avg Contract Value</div></div>
+        </div>
+        <div class="stats-sep"></div>
+        <div class="hc-row"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.4 1.18 2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.29-1.29a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>978.333.1734</div>
+        <div class="hc-row"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Chrisamclean422@gmail.com</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about"><div class="wrap sp">
+  <div class="eyebrow reveal"><div class="el"></div><span class="et">About Me</span></div>
+  <h2 class="sec-title reveal">The Full Picture</h2>
+  <div class="sum-grid">
+    <div class="sum-text reveal">
+      <p>I'm an enterprise sales leader with over a decade of experience owning and closing complex, multi-stakeholder deals across SaaS, public sector, and infrastructure markets. I don't just hit quota — I build the systems, relationships, and discipline that make hitting quota repeatable.</p>
+      <p>My background spans Fortune 500 technology at Apple, high-growth SaaS at Givinga, and mission-critical infrastructure at ATI Systems — where I recently closed a $2.6M deal with a premier U.S. multinational energy corporation. Every deal is approached with MEDDIC rigor, executive-level communication, and a genuine commitment to solving real business problems.</p>
+      <p>Beyond the boardroom, I serve as a Senior Network Communications Sergeant in the U.S. Army National Guard — a role that has sharpened my leadership, accountability, and ability to perform under pressure. I bring that same discipline to every sales engagement.</p>
+    </div>
+    <div class="sum-panel reveal d2">
+      <div class="sp-title">What I Bring</div>
+      <div class="sp-item"><div class="sp-dot"></div><div class="sp-txt"><strong>Full-Cycle Ownership</strong> — From outbound prospecting through contract negotiation and close</div></div>
+      <div class="sp-item"><div class="sp-dot"></div><div class="sp-txt"><strong>MEDDIC Discipline</strong> — Structured qualification across 3–12 month enterprise cycles</div></div>
+      <div class="sp-item"><div class="sp-dot"></div><div class="sp-txt"><strong>Executive Presence</strong> — C-suite, VP, and public-sector engagement at every level</div></div>
+      <div class="sp-item"><div class="sp-dot"></div><div class="sp-txt"><strong>Cross-Functional Leadership</strong> — Engineering, GIS, ops, and GTM team alignment</div></div>
+      <div class="sp-item"><div class="sp-dot"></div><div class="sp-txt"><strong>Military-Grade Accountability</strong> — 10+ years of service, U.S. Army National Guard</div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- EXPERIENCE -->
+<div class="alt" id="experience"><div class="wrap sp">
+  <div class="eyebrow reveal"><div class="el"></div><span class="et">Work History</span></div>
+  <h2 class="sec-title reveal">Experience</h2>
+  <p class="sec-sub reveal">A track record built on enterprise deals, consistent quota attainment, and long-term client relationships.</p>
+  <div class="exp-tl">
+
+    <div class="exp-entry reveal">
+      <div class="exp-dot"><div class="exp-dot-in"></div></div>
+      <div class="exp-card open">
+        <div class="exp-head" onclick="toggleExp(this)">
+          <div>
+            <div class="exp-co">ATI Systems <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:var(--muted);font-weight:400">(Acoustic Technology, Inc.)</span></div>
+            <div class="rb">Manager, Sales</div>
+            <div class="exp-date">September 2025 – Present &nbsp;·&nbsp; Boston, MA</div>
+          </div>
+          <div class="tog">+</div>
+        </div>
+        <div class="exp-body"><div class="exp-content">
+          <ul class="bul">
+            <li>Own and contribute to a $5M quarterly team quota with direct $1.5M individual responsibility — achieving <strong>118% YTD attainment</strong> and 93% lifetime average.</li>
+            <li>Lead and close full-cycle enterprise deals averaging $350K ACV, with wins up to <strong>$2.6M</strong> including strategic expansion with Fortune 500 industrial clients.</li>
+            <li>Build and maintain 3x–5x pipeline coverage through outbound prospecting and RFP-driven opportunities.</li>
+            <li>Execute MEDDIC-structured sales processes across 3–6 month cycles engaging C-suite, VPs, and public-sector emergency management officials.</li>
+            <li>Navigate complex procurement environments including public-sector RFPs, grant-funded initiatives, and capital improvement programs (CIP).</li>
+            <li>Partner cross-functionally with engineering, GIS, and project teams to deliver tailored customer solutions.</li>
+            <li>Personally led and closed a $2.6M deal with a premier U.S.-based multinational energy corporation — managing stakeholder alignment, technical scoping, and contract negotiation.</li>
+          </ul>
+          <div class="tags"><span class="tag">Enterprise Sales</span><span class="tag">MEDDIC</span><span class="tag">RFP</span><span class="tag">Public Sector</span><span class="tag">Zoho CRM</span><span class="tag">$2.6M Deal</span></div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="exp-entry reveal">
+      <div class="exp-dot"><div class="exp-dot-in"></div></div>
+      <div class="exp-card">
+        <div class="exp-head" onclick="toggleExp(this)">
+          <div>
+            <div class="exp-co">U.S. Army National Guard</div>
+            <div class="rb">Senior Network Communications Sergeant</div>
+            <div class="exp-date">April 2015 – Present &nbsp;·&nbsp; 10+ Years &nbsp;·&nbsp; Boston, MA</div>
+          </div>
+          <div class="tog">+</div>
+        </div>
+        <div class="exp-body"><div class="exp-content">
+          <ul class="bul">
+            <li>Lead and train junior soldiers in communications system setup, maintenance, and compliance.</li>
+            <li>Support secure, multi-channel communications in time-sensitive operational environments.</li>
+            <li>Coordinate personnel and equipment readiness during mobilizations and emergency responses.</li>
+            <li>Apply military leadership principles to drive accountability, teamwork, and operational reliability.</li>
+          </ul>
+          <div class="tags"><span class="tag">Leadership</span><span class="tag">Communications</span><span class="tag">Emergency Response</span><span class="tag">Team Development</span></div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="exp-entry reveal">
+      <div class="exp-dot"><div class="exp-dot-in"></div></div>
+      <div class="exp-card">
+        <div class="exp-head" onclick="toggleExp(this)">
+          <div>
+            <div class="exp-co">Givinga Inc.</div>
+            <div class="rb">Account Executive</div>
+            <div class="exp-date">March 2024 – September 2025 &nbsp;·&nbsp; Boston, MA</div>
+          </div>
+          <div class="tog">+</div>
+        </div>
+        <div class="exp-body"><div class="exp-content">
+          <ul class="bul">
+            <li>Owned $250K quarterly quota with <strong>92% attainment</strong> across full-cycle SaaS sales in mid-market and enterprise segments.</li>
+            <li>Closed new business averaging $36K ACV on 1–3 month cycles while maintaining a high-velocity pipeline.</li>
+            <li>Led multi-stakeholder sales processes engaging CHROs, CFOs, and HR/Finance leadership.</li>
+            <li>Built ROI-driven business cases positioning the platform as a strategic investment tied to retention and employee engagement.</li>
+            <li>Managed 3-year contracts with consistent upsell and cross-sell across multiple product lines.</li>
+            <li>Collaborated with product, marketing, and customer success teams to support onboarding and long-term adoption.</li>
+          </ul>
+          <div class="tags"><span class="tag">SaaS</span><span class="tag">Mid-Market</span><span class="tag">CHRO/CFO Engagement</span><span class="tag">HubSpot</span><span class="tag">ROI Selling</span></div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="exp-entry reveal">
+      <div class="exp-dot"><div class="exp-dot-in"></div></div>
+      <div class="exp-card">
+        <div class="exp-head" onclick="toggleExp(this)">
+          <div>
+            <div class="exp-co">Apple Inc.</div>
+            <div class="rb">Account Manager (Business Pro) → BDR</div>
+            <div class="exp-date">November 2015 – March 2024 &nbsp;·&nbsp; Boston, MA</div>
+          </div>
+          <div class="tog">+</div>
+        </div>
+        <div class="exp-body"><div class="exp-content">
+          <ul class="bul">
+            <li>Managed a portfolio of business accounts with top accounts scaling to <strong>$4M+ annually</strong>; closed individual deals up to $500K.</li>
+            <li>Led a $385K rollout of 400+ iPhones for a major U.S. retailer, supporting a multi-location POS system implementation.</li>
+            <li>Delivered <strong>25–30% YoY account growth</strong> through solution expansion and new use case development.</li>
+            <li>Sold integrated hardware, MDM, and services solutions — positioning Apple as a scalable enterprise platform.</li>
+            <li>Built relationships across IT, operations, and executive leadership, enabling multi-threaded account growth.</li>
+            <li>As BDR: generated pipeline through multi-channel outreach (phone, email, social) across SMB and mid-market accounts.</li>
+          </ul>
+          <div class="tags"><span class="tag">Account Management</span><span class="tag">MDM Solutions</span><span class="tag">Enterprise Hardware</span><span class="tag">25–30% YoY Growth</span><span class="tag">Salesforce</span></div>
+        </div></div>
+      </div>
+    </div>
+
+  </div>
+</div></div>
+
+<!-- SKILLS -->
+<section id="skills"><div class="wrap sp">
+  <div class="eyebrow reveal"><div class="el"></div><span class="et">Capabilities</span></div>
+  <h2 class="sec-title reveal">Core Skills</h2>
+  <p class="sec-sub reveal">Built across enterprise, SaaS, hardware, and public sector — a versatile toolkit for complex sales environments.</p>
+  <div class="sk-grid">
+    <div class="sk-cat reveal">
+      <div class="sk-icon">🎯</div>
+      <div class="sk-name">Sales Methodology</div>
+      <div class="sk-list">
+        <div class="sk-row">MEDDIC / MEDDPIC <div class="sk-bg"><div class="sk-bar" data-w="97"></div></div></div>
+        <div class="sk-row">Full-Cycle Sales <div class="sk-bg"><div class="sk-bar" data-w="98"></div></div></div>
+        <div class="sk-row">Pipeline Generation <div class="sk-bg"><div class="sk-bar" data-w="95"></div></div></div>
+        <div class="sk-row">Forecasting <div class="sk-bg"><div class="sk-bar" data-w="91"></div></div></div>
+        <div class="sk-row">Contract Negotiation <div class="sk-bg"><div class="sk-bar" data-w="93"></div></div></div>
+      </div>
+    </div>
+    <div class="sk-cat reveal d1">
+      <div class="sk-icon">🤝</div>
+      <div class="sk-name">Stakeholder Engagement</div>
+      <div class="sk-list">
+        <div class="sk-row">Executive Engagement <div class="sk-bg"><div class="sk-bar" data-w="96"></div></div></div>
+        <div class="sk-row">Multi-Threaded Selling <div class="sk-bg"><div class="sk-bar" data-w="94"></div></div></div>
+        <div class="sk-row">Account Expansion <div class="sk-bg"><div class="sk-bar" data-w="92"></div></div></div>
+        <div class="sk-row">RFP & Procurement <div class="sk-bg"><div class="sk-bar" data-w="89"></div></div></div>
+        <div class="sk-row">Cross-Functional Leadership <div class="sk-bg"><div class="sk-bar" data-w="90"></div></div></div>
+      </div>
+    </div>
+    <div class="sk-cat reveal d2">
+      <div class="sk-icon">🛠️</div>
+      <div class="sk-name">Tools & Platforms</div>
+      <div class="sk-list">
+        <div class="sk-row">Salesforce <div class="sk-bg"><div class="sk-bar" data-w="92"></div></div></div>
+        <div class="sk-row">HubSpot <div class="sk-bg"><div class="sk-bar" data-w="95"></div></div></div>
+        <div class="sk-row">Zoho CRM <div class="sk-bg"><div class="sk-bar" data-w="90"></div></div></div>
+        <div class="sk-row">SaaS Sales <div class="sk-bg"><div class="sk-bar" data-w="93"></div></div></div>
+        <div class="sk-row">Strategic Acct Mgmt <div class="sk-bg"><div class="sk-bar" data-w="96"></div></div></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- EDUCATION -->
+<div class="alt" id="education"><div class="wrap sp">
+  <div class="eyebrow reveal"><div class="el"></div><span class="et">Academic Background</span></div>
+  <h2 class="sec-title reveal">Education</h2>
+  <div class="edu-grid">
+    <div class="edu-card reveal">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-deg">B.S. Business Administration & Management</div>
+        <div class="edu-sch">Worcester State University</div>
+        <div class="edu-det">Worcester, MA &nbsp;·&nbsp; Graduated</div>
+      </div>
+    </div>
+    <div class="edu-card reveal d1">
+      <div class="edu-icon">⚡</div>
+      <div>
+        <div class="edu-deg">Electrical Wiring & General Motor Control Functions</div>
+        <div class="edu-sch">Assabet Valley Regional Vocational/Technical High School</div>
+        <div class="edu-det">Marlborough, MA &nbsp;·&nbsp; Graduated</div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications"><div class="wrap sp">
+  <div class="eyebrow reveal"><div class="el"></div><span class="et">Credentials</span></div>
+  <h2 class="sec-title reveal">Certifications</h2>
+  <p class="sec-sub reveal">Formally certified across emergency management, sales operations, and U.S. Army leadership.</p>
+  <div class="cert-grid">
+    <div class="cert-card reveal"><div class="cert-badge fema">FEMA</div><div><div class="cert-name">ICS-800: National Response Framework</div><div class="cert-org">FEMA · 2025</div></div></div>
+    <div class="cert-card reveal d1"><div class="cert-badge fema">FEMA</div><div><div class="cert-name">ICS-700: National Incident Management System</div><div class="cert-org">FEMA · 2025</div></div></div>
+    <div class="cert-card reveal d2"><div class="cert-badge fema">FEMA</div><div><div class="cert-name">ICS-200: Basic Incident Command System</div><div class="cert-org">FEMA · 2025</div></div></div>
+    <div class="cert-card reveal d3"><div class="cert-badge fema">FEMA</div><div><div class="cert-name">ICS-100: Intro to Incident Command Systems</div><div class="cert-org">FEMA · 2025</div></div></div>
+    <div class="cert-card reveal"><div class="cert-badge fema">FEMA</div><div><div class="cert-name">Hazardous Materials Awareness</div><div class="cert-org">FEMA · 2025</div></div></div>
+    <div class="cert-card reveal d1"><div class="cert-badge hs">HS</div><div><div class="cert-name">Frictionless Sales Certification</div><div class="cert-org">HubSpot Academy · 2025</div></div></div>
+    <div class="cert-card reveal d2"><div class="cert-badge hs">HS</div><div><div class="cert-name">HubSpot Sales Software</div><div class="cert-org">HubSpot Academy · 2025</div></div></div>
+    <div class="cert-card reveal d3"><div class="cert-badge army">USA</div><div><div class="cert-name">Distributed Leadership Course II</div><div class="cert-org">U.S. Army · 2024</div></div></div>
+    <div class="cert-card reveal"><div class="cert-badge army">USA</div><div><div class="cert-name">Basic Leadership Course</div><div class="cert-org">U.S. Army · 2024</div></div></div>
+    <div class="cert-card reveal d1"><div class="cert-badge army">USA</div><div><div class="cert-name">Structured Self-Development Level I</div><div class="cert-org">U.S. Army · 2024</div></div></div>
+  </div>
+</div></section>
+
+<!-- CONTACT -->
+<div class="alt" id="contact"><div class="wrap sp">
+  <div class="eyebrow reveal"><div class="el"></div><span class="et">Get In Touch</span></div>
+  <h2 class="sec-title reveal">Let's Connect</h2>
+  <div class="ct-layout">
+    <div class="reveal">
+      <p style="font-size:16px;color:var(--muted);line-height:1.8">Whether you're looking for an enterprise closer, exploring a strategic partnership, or just want to connect — I'd love to hear from you.</p>
+      <div class="ct-items">
+        <a href="mailto:Chrisamclean422@gmail.com" class="ci">
+          <div class="ci-icon"><svg width="17" height="17" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="ci-lbl">Email</div><div class="ci-val">Chrisamclean422@gmail.com</div></div>
+        </a>
+        <a href="tel:9783331734" class="ci">
+          <div class="ci-icon"><svg width="17" height="17" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.4 1.18 2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.29-1.29a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div><div class="ci-lbl">Phone</div><div class="ci-val">978.333.1734</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/chris-mclean422" target="_blank" class="ci">
+          <div class="ci-icon"><svg width="17" height="17" fill="var(--accent)" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></div>
+          <div><div class="ci-lbl">LinkedIn</div><div class="ci-val">linkedin.com/in/chris-mclean422</div></div>
+        </a>
+        <div class="ci" style="cursor:default">
+          <div class="ci-icon"><svg width="17" height="17" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="ci-lbl">Location</div><div class="ci-val">Boston, MA</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="cf reveal d2">
+      <div class="cf-title">Send a Message</div>
+      <div class="form-row">
+        <div class="fg"><label>First Name</label><input type="text" id="fn" placeholder="John"></div>
+        <div class="fg"><label>Last Name</label><input type="text" id="ln" placeholder="Smith"></div>
+      </div>
+      <div class="fg"><label>Email Address</label><input type="email" id="fe" placeholder="john@company.com"></div>
+      <div class="fg"><label>Company</label><input type="text" id="fc" placeholder="Your Company"></div>
+      <div class="fg"><label>Subject</label>
+        <select id="fs">
+          <option value="">Select a topic...</option>
+          <option>Job Opportunity</option>
+          <option>Partnership / Collaboration</option>
+          <option>General Inquiry</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="fg"><label>Message</label><textarea id="fm" placeholder="Tell me what's on your mind..."></textarea></div>
+      <button class="fsub" onclick="sendForm()">Send Message</button>
+      <p class="fnote">Sends directly to Chrisamclean422@gmail.com</p>
+      <div class="fsuccess" id="fsuccess">✓ Message sent! Chris will be in touch soon.</div>
+    </div>
+  </div>
+</div></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fi">
+    <div class="flogo">Chris <span>McLean</span></div>
+    <div class="ftxt">© 2025 Chris McLean · Boston, MA · Enterprise Sales Leader</div>
+    <div class="flinks">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="https://www.linkedin.com/in/chris-mclean422" target="_blank">LinkedIn</a>
+      <a href="mailto:Chrisamclean422@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){document.getElementById('mobMenu').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobMenu').classList.remove('open')}
+
+function toggleExp(btn){
+  const card=btn.closest('.exp-card');
+  const isOpen=card.classList.contains('open');
+  document.querySelectorAll('.exp-card.open').forEach(c=>c.classList.remove('open'));
+  if(!isOpen)card.classList.add('open');
+}
+
+// Scroll reveal
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+// Skill bars
+const bo=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.sk-bar').forEach(b=>{b.style.width=b.dataset.w+'%'});
+      bo.unobserve(e.target);
+    }
+  });
+},{threshold:0.3});
+document.querySelectorAll('.sk-cat').forEach(el=>bo.observe(el));
+
+// Counters
+function animCount(el,target,suffix,dec){
+  const start=performance.now(),dur=1800;
+  function step(now){
+    const p=Math.min((now-start)/dur,1);
+    const ease=1-Math.pow(1-p,3);
+    el.textContent=(dec?(ease*target).toFixed(1):Math.floor(ease*target))+suffix;
+    if(p<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+const co=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('[data-count]').forEach(el=>{
+        animCount(el,parseFloat(el.dataset.count),el.dataset.suffix||'',el.hasAttribute('data-decimal'));
+      });
+      co.unobserve(e.target);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('.stats-card').forEach(el=>co.observe(el));
+
+// Contact form
+function sendForm(){
+  const fn=document.getElementById('fn').value.trim();
+  const ln=document.getElementById('ln').value.trim();
+  const fe=document.getElementById('fe').value.trim();
+  const fc=document.getElementById('fc').value.trim();
+  const fs=document.getElementById('fs').value;
+  const fm=document.getElementById('fm').value.trim();
+  if(!fn||!fe||!fm){alert('Please fill in your name, email, and message.');return;}
+  const body=`Name: ${fn} ${ln}\nEmail: ${fe}\nCompany: ${fc}\nSubject: ${fs}\n\n${fm}`;
+  window.location.href=`mailto:Chrisamclean422@gmail.com?subject=${encodeURIComponent('Website Contact: '+fs)}&body=${encodeURIComponent(body)}`;
+  document.getElementById('fsuccess').style.display='block';
+}
+</script>
+</body>
+</html>
